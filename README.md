@@ -51,5 +51,23 @@ kubectl version --client
 * Para conectar com o Cluster, vá no google console e na aba console clicar em connect, copy link.
 * Deploy a partir da máquina local:
 ```
-kubectl set image deployment hello-world-rest-api hello-world-rest-api=havyx/hello-world-rest-api
+kubectl set image deployment hello-world-rest-api hello-world-rest-api=havyx/hello-world-rest-api --record
+History of deplyments versions
+kubectl rollout status deployment hello-world-rest-api
+kubectl rollout undo deployment hello-world-rest-api --to-revision=1
+kubectl rollout history deployment hello-world-rest-api
+kubectl get pods -> kubectl logs POD_NAME -f
+watch curl cloud_network_URL
+```
+* Get YAML FILE on Terminal
+```
+kubectl get deployment hello-world-rest-api -o yaml
+kubectl get deployment hello-world-rest-api -o yaml > deployment.yaml,
+kubectl get service hello-world-rest-api -o yaml
+kubectl get service hello-world-rest-api -o yaml > sevice.yaml
+```
+---
+#### Make changes, example replicas:2
+```
+kubectl apply -f deployment.yaml
 ```
