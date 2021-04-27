@@ -16,6 +16,8 @@ kubectl version
 kubectl create deployment hello-world-rest-api --image=in28min/hello-world-rest-api:0.0.1.RELEASE
 kubectl expose deployment hello-world-rest-api --type=LoadBalancer --port=8080
 ```
+* Ao executar = kubectl create deployment... -> São criadas as entidades = deployment, replicaset & pod
+* kubectl expose deployment... -> service
 ---
 #### Resizing Clusters
 ```
@@ -23,3 +25,11 @@ gcloud container clusters resize --zone <name_of_zone> <name_of_your_cluster> --
 gcloud container clusters resize --zone <name_of_zone> <name_of_your_cluster> --num-nodes=3
 ```
 ---
+#### Numero de Containers em um POD e IP do POD (kubectl explain pods)
+* 1/1 significa que há um containers nesse pod. no pod IP 10.68.0.6, todos os containers dentro do pod podem user localhost.
+```
+kubectl get pods -i wide
+hello-world-rest-api-6d5479ddb6-vbxk5   1/1     Running   0          33m   10.68.0.6   gke-cluster-padotec-default-pool-b9f34c8c-z3s8   <none>           <none>
+kubectl describe pod hello-world-rest-api-6d5479ddb6-vbxk5
+```
+
