@@ -32,4 +32,20 @@ kubectl get pods -i wide
 hello-world-rest-api-6d5479ddb6-vbxk5   1/1     Running   0          33m   10.68.0.6   gke-cluster-padotec-default-pool-b9f34c8c-z3s8   <none>           <none>
 kubectl describe pod hello-world-rest-api-6d5479ddb6-vbxk5
 ```
-
+---
+### Installing GCloud & Kubectl https://cloud.google.com/sdk/docs/install#deb
+#### GCloud
+```
+sudo apt-get install kubectl
+gcloud init
+gcloud auth login
+```
+#### kubectl https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
+```
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
+echo "$(<kubectl.sha256) kubectl" | sha256sum --check
+sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+kubectl version --client
+```
+* Para conectar com o Cluster, vá no google console e na aba console clicar em connect, copy link.
