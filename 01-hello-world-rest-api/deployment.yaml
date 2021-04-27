@@ -1,0 +1,72 @@
+apiVersion: v1
+items:
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "3"
+      kubernetes.io/change-cause: kubectl set image deployment hello-world-rest-api
+        hello-world-rest-api=havyx/hello-world-rest-api --record=true
+    creationTimestamp: "2021-04-27T11:57:01Z"
+    generation: 5
+    labels:
+      app: hello-world-rest-api
+    name: hello-world-rest-api
+    namespace: default
+    resourceVersion: "191912"
+    selfLink: /apis/apps/v1/namespaces/default/deployments/hello-world-rest-api
+    uid: 6c7f20a5-d8de-4ba8-a205-9e9269295e05
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 2
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: hello-world-rest-api
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: hello-world-rest-api
+      spec:
+        containers:
+        - image: havyx/hello-world-rest-api
+          imagePullPolicy: IfNotPresent
+          name: hello-world-rest-api
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: "2021-04-27T12:47:19Z"
+      lastUpdateTime: "2021-04-27T12:47:19Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    - lastTransitionTime: "2021-04-27T19:25:37Z"
+      lastUpdateTime: "2021-04-27T19:25:37Z"
+      message: ReplicaSet "hello-world-rest-api-66d78688c5" has timed out progressing.
+      reason: ProgressDeadlineExceeded
+      status: "False"
+      type: Progressing
+    observedGeneration: 5
+    readyReplicas: 1
+    replicas: 2
+    unavailableReplicas: 1
+    updatedReplicas: 1
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""
