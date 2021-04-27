@@ -16,3 +16,10 @@ kubectl version
 kubectl create deployment hello-world-rest-api --image=in28min/hello-world-rest-api:0.0.1.RELEASE
 kubectl expose deployment hello-world-rest-api --type=LoadBalancer --port=8080
 ```
+---
+#### Resizing Clusters
+```
+gcloud container clusters resize --zone <name_of_zone> <name_of_your_cluster> --num-nodes=0
+gcloud container clusters resize --zone <name_of_zone> <name_of_your_cluster> --num-nodes=3
+```
+---
