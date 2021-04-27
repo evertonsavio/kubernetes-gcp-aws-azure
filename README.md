@@ -49,3 +49,7 @@ sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 kubectl version --client
 ```
 * Para conectar com o Cluster, vá no google console e na aba console clicar em connect, copy link.
+* Deploy a partir da máquina local:
+```
+kubectl set image deployment hello-world-rest-api hello-world-rest-api=havyx/hello-world-rest-api
+```
