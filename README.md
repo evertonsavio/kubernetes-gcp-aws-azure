@@ -70,4 +70,6 @@ kubectl get service hello-world-rest-api -o yaml > sevice.yaml
 #### Make changes, example replicas:2
 ```
 kubectl apply -f deployment.yaml
+kubectl delete all -l app=hello-world-rest-api
+kubectl get all
 ```
