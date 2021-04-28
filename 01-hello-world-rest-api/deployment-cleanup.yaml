@@ -23,7 +23,7 @@ items:
           app: hello-world-rest-api
       spec:
         containers:
-        - image: havyx/hello-world-rest-api
+        - image: havyx/hello-world-rest-api:0.0.4-SNAPSHOT
           imagePullPolicy: IfNotPresent
           name: hello-world-rest-api
         restartPolicy: Always
@@ -44,7 +44,7 @@ items:
       namespace: default
     spec:
       ports:
-        - nodePort: 32415
+        - nodePort: 30702
           port: 8080
           protocol: TCP
           targetPort: 8080
