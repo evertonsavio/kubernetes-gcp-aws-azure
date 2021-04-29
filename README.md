@@ -78,3 +78,8 @@ kubectl get all
 ```
 kubectl diff -f deployment-cleanup.yaml
 ```
+## Kompose
+* Install: https://kompose.io/installation/
+```
+kompose convert
+```
