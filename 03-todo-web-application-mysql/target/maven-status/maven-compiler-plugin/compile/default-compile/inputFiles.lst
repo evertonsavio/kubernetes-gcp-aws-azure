@@ -1,0 +1,10 @@
+/home/padotec/Github/Kubernetes_GPC-AWS-AZURE/03-todo-web-application-mysql/src/main/java/dev/evertonsavio/springboot/web/controller/WelcomeController.java
+/home/padotec/Github/Kubernetes_GPC-AWS-AZURE/03-todo-web-application-mysql/src/main/java/dev/evertonsavio/springboot/web/controller/LogoutController.java
+/home/padotec/Github/Kubernetes_GPC-AWS-AZURE/03-todo-web-application-mysql/src/main/java/dev/evertonsavio/springboot/web/model/Todo.java
+/home/padotec/Github/Kubernetes_GPC-AWS-AZURE/03-todo-web-application-mysql/src/main/java/dev/evertonsavio/springboot/web/SpringBootFirstWebApplication.java
+/home/padotec/Github/Kubernetes_GPC-AWS-AZURE/03-todo-web-application-mysql/src/main/java/dev/evertonsavio/springboot/web/controller/ErrorController.java
+/home/padotec/Github/Kubernetes_GPC-AWS-AZURE/03-todo-web-application-mysql/src/main/java/dev/evertonsavio/springboot/web/EnvironmentConfigurationLogger.java
+/home/padotec/Github/Kubernetes_GPC-AWS-AZURE/03-todo-web-application-mysql/src/main/java/dev/evertonsavio/springboot/web/service/TodoService.java
+/home/padotec/Github/Kubernetes_GPC-AWS-AZURE/03-todo-web-application-mysql/src/main/java/dev/evertonsavio/springboot/web/controller/TodoController.java
+/home/padotec/Github/Kubernetes_GPC-AWS-AZURE/03-todo-web-application-mysql/src/main/java/dev/evertonsavio/springboot/web/service/TodoRepository.java
+/home/padotec/Github/Kubernetes_GPC-AWS-AZURE/03-todo-web-application-mysql/src/main/java/dev/evertonsavio/springboot/web/security/SecurityConfiguration.java
