@@ -83,3 +83,6 @@ kubectl diff -f deployment-cleanup.yaml
 ```
 kompose convert
 ```
+## Volumes
+#### kubectl get pv (Persistent volume, on clusters)
+#### kubectl get pvc (persistent volume claim, access to the persistent volume)
