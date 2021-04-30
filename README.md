@@ -88,12 +88,45 @@ kompose convert
 #### kubectl get pvc (persistent volume claim, access to the persistent volume)
 ---
 ### Auto Scaling
+#### Cluster Auto Scaling
+```
+gcloud container clusters create example-cluster \
+--zone us-central1-a \
+--node-locations us-central1-a,us-central1-b,us-central1-f \
+--num-nodes 2 --enable-autoscaling --min-nodes 1 --max-nodes 4
+```
+#### Vertical Pod Auto Scaling
+- Available in version 1.14.7-gke.10 or higher and in 1.15.4-gke.15 or higher
+```
+gcloud container clusters create [CLUSTER_NAME] --enable-vertical-pod-autoscaling --cluster-version=1.14.7
+gcloud container clusters update [CLUSTER-NAME] --enable-vertical-pod-autoscaling
+```
+* Configure VPA
+
+```
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: currency-exchange-vpa
+spec:
+  targetRef:
+    apiVersion: "apps/v1"
+    kind:       Deployment
+    name:       currency-exchange
+  updatePolicy:
+    updateMode: "Off"
+```
+* Get Recommendations off: recomendatios / auto: update pods
+```
+kubectl get vpa currency-exchange-vpa --output yaml
+```
+#### HPA Horizontal Pod Auto Scaling
 ```
 watch -n 0.1 curl http://INGRESS_IP/currency-exchange-cloud/from/USD/to/INR
 kubectl top pods
 kubectl autoscale deployment currency-exchange-cloud --min=1 max=3 --cpu-percent=70
 kubectl get events
-#"horizontal pod auto-scaling"
+#Horizontal POD Auto-Scaling
 kubectl hpa 
 kubectl get hpa -o yaml
 kubectl get hpa -o yaml > 01-hpa.yaml
