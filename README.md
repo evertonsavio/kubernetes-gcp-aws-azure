@@ -86,3 +86,16 @@ kompose convert
 ## Volumes
 #### kubectl get pv (Persistent volume, on clusters)
 #### kubectl get pvc (persistent volume claim, access to the persistent volume)
+---
+### Auto Scaling
+```
+watch -n 0.1 curl http://INGRESS_IP/currency-exchange-cloud/from/USD/to/INR
+kubectl top pods
+kubectl autoscale deployment currency-exchange-cloud --min=1 max=3 --cpu-percent=70
+kubectl get events
+#"horizontal pod auto-scaling"
+kubectl hpa 
+kubectl get hpa -o yaml
+kubectl get hpa -o yaml > 01-hpa.yaml
+kubectl get hpa currency-exchange -o yaml > 01-hpa.yaml
+```
