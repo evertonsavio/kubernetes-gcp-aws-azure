@@ -1,0 +1,7 @@
+/home/padotec/Github/Kubernetes_GPC-AWS-AZURE/04-currency-exchange-basic/src/main/java/dev/evertonsaio/microservices/currencyexchangeservice/resource/ExchangeValueRepository.java
+/home/padotec/Github/Kubernetes_GPC-AWS-AZURE/04-currency-exchange-basic/src/main/java/dev/evertonsaio/microservices/currencyexchangeservice/resource/ExchangeValue.java
+/home/padotec/Github/Kubernetes_GPC-AWS-AZURE/04-currency-exchange-basic/src/main/java/dev/evertonsaio/microservices/currencyexchangeservice/CurrencyExchangeServiceApplicationH2.java
+/home/padotec/Github/Kubernetes_GPC-AWS-AZURE/04-currency-exchange-basic/src/main/java/dev/evertonsaio/microservices/currencyexchangeservice/resource/CurrencyExchangeController.java
+/home/padotec/Github/Kubernetes_GPC-AWS-AZURE/04-currency-exchange-basic/src/main/java/dev/evertonsaio/microservices/currencyexchangeservice/security/SecurityConfiguration.java
+/home/padotec/Github/Kubernetes_GPC-AWS-AZURE/04-currency-exchange-basic/src/main/java/dev/evertonsaio/microservices/currencyexchangeservice/util/environment/EnvironmentConfigurationLogger.java
+/home/padotec/Github/Kubernetes_GPC-AWS-AZURE/04-currency-exchange-basic/src/main/java/dev/evertonsaio/microservices/currencyexchangeservice/util/environment/InstanceInformationService.java
