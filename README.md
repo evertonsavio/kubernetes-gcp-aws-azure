@@ -1,11 +1,11 @@
 ### Kubernetes   GCP-GKE AWS-EKS AZURE-AKS
+* Project files from https://github.com/in28minutes
 ---
-* Criar conta: https://cloud.google.com/  
 
-> Kubernetes gerencia recursos, servidores. 
-> Na nuvem esses servidores são "virtual servers e são chamados": 1. AMAZON: EC2 2. Virtual machines 3. Google: Compute Engines;
-> Kubernetes chama eles de NODES.
-> Para gerenciar multiplos Worker Nodes, você precisa de manages, os Master Node(s).
+> Kubernetes gerencia recursos, servidores.   
+> Na nuvem servidores são virtuais e são chamados": 1. AMAZON: EC2 2. Virtual machines 3. Google: Compute Engines;
+> Kubernetes chama eles de NODES.  
+> Para gerenciar multiplos Worker Nodes, você precisa de manages, os Master Node(s).   
 ---
 * No google console, ativar Kubernetes Engine Api e criar um novo Cluster.
 * Ativar Google Cloud Shell na aba superior direita.
