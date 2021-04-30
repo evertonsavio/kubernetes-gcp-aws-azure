@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: gateway-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /currency-exchange/*
+        backend:
+          serviceName: currency-exchange
+          servicePort: 8000          
+      - path: /currency-conversion-cloud/*
+        backend:
+          serviceName: currency-conversion-cloud
+          servicePort: 8100

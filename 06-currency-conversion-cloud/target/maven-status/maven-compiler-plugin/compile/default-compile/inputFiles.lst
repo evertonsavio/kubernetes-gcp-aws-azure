@@ -1,0 +1,7 @@
+/home/padotec/Github/Kubernetes_GPC-AWS-AZURE/06-currency-conversion-cloud/src/main/java/dev/evertonsavio/microservices/currencyconversionservice/CurrencyConversionServiceApplication.java
+/home/padotec/Github/Kubernetes_GPC-AWS-AZURE/06-currency-conversion-cloud/src/main/java/dev/evertonsavio/microservices/currencyconversionservice/security/SecurityConfiguration.java
+/home/padotec/Github/Kubernetes_GPC-AWS-AZURE/06-currency-conversion-cloud/src/main/java/dev/evertonsavio/microservices/currencyconversionservice/resource/CurrencyConversionController.java
+/home/padotec/Github/Kubernetes_GPC-AWS-AZURE/06-currency-conversion-cloud/src/main/java/dev/evertonsavio/microservices/currencyconversionservice/util/environment/InstanceInformationService.java
+/home/padotec/Github/Kubernetes_GPC-AWS-AZURE/06-currency-conversion-cloud/src/main/java/dev/evertonsavio/microservices/currencyconversionservice/resource/CurrencyExchangeServiceProxy.java
+/home/padotec/Github/Kubernetes_GPC-AWS-AZURE/06-currency-conversion-cloud/src/main/java/dev/evertonsavio/microservices/currencyconversionservice/util/environment/EnvironmentConfigurationLogger.java
+/home/padotec/Github/Kubernetes_GPC-AWS-AZURE/06-currency-conversion-cloud/src/main/java/dev/evertonsavio/microservices/currencyconversionservice/resource/CurrencyConversionBean.java
