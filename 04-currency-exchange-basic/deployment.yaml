@@ -22,7 +22,7 @@ spec:
         app: currency-exchange
     spec:
       containers:
-      - image: in28min/currency-exchange:0.0.1-RELEASE #CHANGE
+      - image: havyx/currency-exchange:0.0.1-RELEASE #CHANGE
         imagePullPolicy: IfNotPresent
         name: currency-exchange
         ports:
