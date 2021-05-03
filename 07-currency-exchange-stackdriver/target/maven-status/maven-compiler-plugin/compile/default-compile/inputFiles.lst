@@ -1,0 +1,7 @@
+/home/padotec/Github/Kubernetes_GPC-AWS-AZURE/07-currency-exchange-stackdriver/src/main/java/dev/evertonsavio/microservices/currencyexchangeservice/security/SecurityConfiguration.java
+/home/padotec/Github/Kubernetes_GPC-AWS-AZURE/07-currency-exchange-stackdriver/src/main/java/dev/evertonsavio/microservices/currencyexchangeservice/resource/ExchangeValueRepository.java
+/home/padotec/Github/Kubernetes_GPC-AWS-AZURE/07-currency-exchange-stackdriver/src/main/java/dev/evertonsavio/microservices/currencyexchangeservice/resource/ExchangeValue.java
+/home/padotec/Github/Kubernetes_GPC-AWS-AZURE/07-currency-exchange-stackdriver/src/main/java/dev/evertonsavio/microservices/currencyexchangeservice/util/environment/InstanceInformationService.java
+/home/padotec/Github/Kubernetes_GPC-AWS-AZURE/07-currency-exchange-stackdriver/src/main/java/dev/evertonsavio/microservices/currencyexchangeservice/util/environment/EnvironmentConfigurationLogger.java
+/home/padotec/Github/Kubernetes_GPC-AWS-AZURE/07-currency-exchange-stackdriver/src/main/java/dev/evertonsavio/microservices/currencyexchangeservice/resource/CurrencyExchangeController.java
+/home/padotec/Github/Kubernetes_GPC-AWS-AZURE/07-currency-exchange-stackdriver/src/main/java/dev/evertonsavio/microservices/currencyexchangeservice/CurrencyExchangeServiceApplicationH2.java
