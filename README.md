@@ -67,7 +67,7 @@ kubectl get service hello-world-rest-api -o yaml
 kubectl get service hello-world-rest-api -o yaml > sevice.yaml
 ```
 ---
-#### Aplicar deployment, replicas:2
+#### Aplicar deployment, replicas:2  
 ```
 kubectl apply -f deployment.yaml
 kubectl delete all -l app=hello-world-rest-api
@@ -78,24 +78,25 @@ kubectl get all
 ```
 kubectl diff -f deployment-cleanup.yaml
 ```
-## Kompose
+## Kompose  
 * Install: https://kompose.io/installation/
 ```
 kompose convert
 ```
-## Volumes
+## Volumes  
 #### kubectl get pv (Persistent volume, on clusters)
-#### kubectl get pvc (persistent volume claim, access to the persistent volume)
+#### kubectl get pvc (persistent volume claim, access to the persistent volume)  
+  
 ---
-### Auto Scaling
-#### Cluster Auto Scaling
+### Auto Scaling  
+#### Cluster Auto Scaling  
 ```
 gcloud container clusters create example-cluster \
 --zone us-central1-a \
 --node-locations us-central1-a,us-central1-b,us-central1-f \
 --num-nodes 2 --enable-autoscaling --min-nodes 1 --max-nodes 4
 ```
-#### Vertical Pod Auto Scaling
+#### Vertical Pod Auto Scaling  
 - Available in version 1.14.7-gke.10 or higher and in 1.15.4-gke.15 or higher
 ```
 gcloud container clusters create [CLUSTER_NAME] --enable-vertical-pod-autoscaling --cluster-version=1.14.7
@@ -119,9 +120,9 @@ spec:
 * Get Recommendations off: recomendatios / auto: update pods
 ```
 kubectl get vpa currency-exchange-vpa --output yaml
-```
-#### HPA Horizontal Pod Auto Scaling
-```
+```  
+#### HPA Horizontal Pod Auto Scaling  
+```  
 watch -n 0.1 curl http://INGRESS_IP/currency-exchange-cloud/from/USD/to/INR
 kubectl top pods
 kubectl autoscale deployment currency-exchange-cloud --min=1 max=3 --cpu-percent=70
@@ -131,4 +132,60 @@ kubectl hpa
 kubectl get hpa -o yaml
 kubectl get hpa -o yaml > 01-hpa.yaml
 kubectl get hpa currency-exchange -o yaml > 01-hpa.yaml
+```
+---
+## Database Production Ready
+* https://cloud.google.com/sql/docs/postgres/connect-kubernetes-engine?authuser=2#cloud-sql-auth-proxy-with-workload-identity
+#### Secret  
+```
+padotec@PDO11869:~$ k create secret generic padotec-secret --from-literal=username=padotec-postgres --from-literal=password=iKiMhMC2iaBpogA1 --from-literal=database=padotec-postgres
+secret/padotec-secret created
+padotec@PDO11869:~$ k describe secret/padotec-secret
+Name:         padotec-secret
+Namespace:    default
+Labels:       <none>
+Annotations:  <none>
+
+Type:  Opaque
+
+Data
+====
+database:  16 bytes
+password:  16 bytes
+username:  16 bytes
+```
+---
+#### Workload Identity  
+```
+padotec@PDO11869:~/Github/Kubernetes_GPC-AWS-AZURE$ vim service_account.yaml
+padotec@PDO11869:~/Github/Kubernetes_GPC-AWS-AZURE$ k apply -f service_account.yaml 
+serviceaccount/ksa-cluster created
+padotec@PDO11869:~/Github/Kubernetes_GPC-AWS-AZURE$ k get all
+NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+service/kubernetes   ClusterIP   10.120.0.1   <none>        443/TCP   3h2m
+padotec@PDO11869:~/Github/Kubernetes_GPC-AWS-AZURE$ k get all -o wide
+NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE    SELECTOR
+service/kubernetes   ClusterIP   10.120.0.1   <none>        443/TCP   3h2m   <none>
+padotec@PDO11869:~/Github/Kubernetes_GPC-AWS-AZURE$ k get serviceaccount
+NAME          SECRETS   AGE
+default       1         3h1m
+ksa-cluster   1         27s
+padotec@PDO11869:~/Github/Kubernetes_GPC-AWS-AZURE$ k get namespace
+NAME              STATUS   AGE
+default           Active   3h3m
+kube-node-lease   Active   3h3m
+kube-public       Active   3h3m
+kube-system       Active   3h3m
+padotec@PDO11869:~/Github/Kubernetes_GPC-AWS-AZURE$ gcloud iam service-accounts add-iam-policy-binding   --role roles/iam.workloadIdentityUser   --member "serviceAccount:euphoric-axiom-311918.svc.id.goog[cluster-1/ksa-cluster]"   padotec-app@euphoric-axiom-311918.iam.gserviceaccount.com
+Updated IAM policy for serviceAccount [padotec-app@euphoric-axiom-311918.iam.gserviceaccount.com].
+bindings:
+- members:
+  - serviceAccount:euphoric-axiom-311918.svc.id.goog[cluster-1/ksa-cluster]
+  role: roles/iam.workloadIdentityUser
+etag: BwXBhiUIa_M=
+version: 1
+padotec@PDO11869:~/Github/Kubernetes_GPC-AWS-AZURE$ kubectl annotate serviceaccount ksa-cluster iam.gke.io/gcp-service-account=padotec-app@euphoric-axiom-311918.iam.gserviceaccount.com
+serviceaccount/ksa-cluster annotated
+padotec@PDO11869:~/Github/Kubernetes_GPC-AWS-AZURE$ 
+
 ```
