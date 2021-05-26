@@ -1,0 +1,49 @@
+server:
+  port: 8001
+
+spring:
+  application:
+    name: devices-service
+  profiles: kubernetes
+  rabbitmq:
+    host: ${RABBIT_HOST:localhost} #rabbitmq
+    listener:
+      simple:
+        retry:
+          enabled: true
+          initial-interval: 3s
+          max-attempts: 6
+          max-interval: 10s
+          multiplier: 2
+
+  datasource:
+    url: jdbc:postgresql://${RDS_HOST:localhost}:${RDS_PORT:5432}/${RDS_DB_NAME:postgres}
+    username: ${RDS_USERNAME:postgres}
+    password: ${RDS_PASSWORD:postgres}
+    initialization-mode: always
+    continue-on-error: true
+    driver-class-name: org.postgresql.Driver
+    testWhileIdle: true
+    validationQuery: SELECT 1
+
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: update
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyHbmImpl
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+    properties:
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: https://${DNS_DOMAIN}/auth/realms/${REALM}/protocol/openid-connect/certs
+          #DNS_DOMAIN & REALM NOT SET YET ON K8S ENV
+
+authorization:
+  ticket:
+    device: ${TICKET_DEVICE}
+    user: ${TICKET_USER}

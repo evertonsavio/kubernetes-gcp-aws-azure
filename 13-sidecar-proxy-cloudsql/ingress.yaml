@@ -1,0 +1,58 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: gateway-ingress
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: "web-static-ip"
+spec:
+  rules:
+    - host: "example1.com.br"
+      http:
+        paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: keycloak
+              port:
+                number: 8080
+        - path: /auth/*
+          pathType: Prefix
+          backend:
+            service:
+              name: keycloak
+              port:
+                number: 8080
+
+        - path: /devices-service/*
+          pathType: Prefix
+          backend:
+            service:
+              name: devices-service
+              port:
+                number: 8001
+        - path: /websocket-service/*
+          pathType: Prefix
+          backend:
+            service:
+              name: websocket-service
+              port:
+                number: 8001
+        - path: /user-service/*
+          pathType: Prefix
+          backend:
+            service:
+              name: user-service
+              port:
+                number: 8001
+
+    - host: "example2.com.br"
+      http:
+        paths:
+        - path: /websocket-service/*
+          pathType: Prefix
+          backend:
+            service:
+              name: websocket-service
+              port:
+                number: 8001
